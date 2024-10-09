@@ -7,7 +7,7 @@
 
 
 	var heroBackgroundImage = Model?.Value<IPublishedContent>("heroBackgroundImage")?.Url() ?? "";
-	var aboutSignatureImage = Model?.Value<IPublishedContent>("aboutSignatureImage")?.Url() ?? "";
+	var aboutSignatureImage = Model?.Value<IPublishedContent>("heroAboutSignatureImage")?.Url() ?? "";
 
     var storyBackgroundImage = Model?.Value<IPublishedContent>("storyBackgroundImage")?.Url() ?? "";
 	var storyImage = Model?.Value<IPublishedContent>("storyImage")?.Url() ?? "";
@@ -66,12 +66,12 @@
         </div>
         <div class="hero-bottom container">
             <div class="hero-text-box">
-                <div class="label">@Model?.Value("aboutSectionTitle")</div>
-                <div><h2>@Model?.Value("aboutHeadline")</h2></div>
-                <div class="quote">@Model?.Value("aboutQuote")</div>
-                <div class="hero-about-text">@Model?.Value("aboutText")</div>
+                <div class="label">@Model?.Value("heroAboutSectionTitle")</div>
+                <div><h2>@Model?.Value("heroAboutHeadline")</h2></div>
+                <div class="quote">@Model?.Value("heroAboutQuote")</div>
+                <div class="hero-about-text">@Model?.Value("heroAboutText")</div>
                 <img src="@aboutSignatureImage" alt="">
-                <div class="signature">@Model?.Value("aboutSignature")</div>
+                <div class="signature">@Model?.Value("heroAboutSignature")</div>
             </div>
         </div>
         <div class="request-box">
