@@ -1,0 +1,59 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@inject Umbraco.Cms.Web.Common.UmbracoHelper UmbracoHelper
+@{
+
+    var rootContents = UmbracoHelper.ContentAtRoot();
+    var settings = rootContents?.FirstOrDefault(x => x.ContentType.Alias == "settingsPage") ?? null;
+    var currentPage = rootContents?.FirstOrDefault(x => x.ContentType.Alias == ViewBag.Id) ?? null;
+
+    var officeLocation = settings?.Value("officeLocation");
+    var navigationLink = new [] {
+        settings?.Value("navigationLink1"),
+        settings?.Value("navigationLink2"),
+        settings?.Value("navigationLink3"),
+        settings?.Value("navigationLink4")
+    };
+
+    var headerBackgroundImage = settings?.Value<IPublishedContent>("headerBackgroundImage")?.Url() ?? "";
+    var headerLogo = settings?.Value<IPublishedContent>("headerLogo")?.Url() ?? "";
+    var headerPageTitle = currentPage?.Value("pageHeaderTitle");
+    var headerCurrentPage = currentPage?.Value("pageHeaderCurrentPage");
+}
+
+<div class="header-top">
+            <div class="header-top-container container">
+                <div><p>@officeLocation</p></div>
+                <div class="social">
+                    <a href="https://www.facebook.com" target="_blank"><div class="social-box"><i class="fa-brands fa-facebook-f"></i></div></a>
+                    <a href="https://x.com" target="_blank"><div><i class="fa-brands fa-twitter"></i></div></a>
+                    <a href="https://www.linkedin.com/" target="_blank"><div class="social-box"><i class="fa-brands fa-linkedin-in"></i></div></a>
+                </div>
+            </div>
+        </div>
+        <div class="header-mid container">
+            <div class="logo"><img src="@headerLogo" alt=""></div>
+            <nav>
+                @for(var i = 0; i < 4; i++) {
+                    if(headerCurrentPage == navigationLink[i]) {
+                        <div><a class="current-nav" href="">navigationLink[i]</a></div>
+                    }
+                    else {
+                        <div><a href=$"/{@navigationLink[i]}">navigationLink[i]</a></div>
+                    }
+                }
+            </nav>
+            <div class="search">
+                <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <img src="@headerImage" alt="">
+            <div class="header-bottom-container container">
+                <div class="header-headline"><h2>@headerPageTitle</h2></div>
+                <div class="header-navigation">
+                    <p>Home <i class="fa-solid fa-chevron-right"></i></p>
+                    <p class="sub2">@headerCurrentPage</p>
+                </div>
+            </div>
+        </div>

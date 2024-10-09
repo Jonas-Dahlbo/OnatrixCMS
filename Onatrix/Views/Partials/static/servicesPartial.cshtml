@@ -1,0 +1,36 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@inject Umbraco.Cms.Web.Common.UmbracoHelper UmbracoHelper
+@{
+    var rootContents = UmbracoHelper.ContentAtRoot();
+    var services = rootContents?.FirstOrDefault(x => x.ContentType.Alias == "servicesPartialPage") ?? null;
+    
+    var sectionTitle = services?.Value<string>("servicesSectionTitle") ?? "";
+    var sectionHeadline = services?.Value<string>("servicesHeadline") ?? "";
+    
+    var serviceImage = new[] {services?.Value<IPublishedContent>("Box1Image")?.Url() ?? "", services?.Value<IPublishedContent>("Box2Image")?.Url() ?? "", services?.Value<IPublishedContent>("Box3Image")?.Url() ?? "", 
+        services?.Value<IPublishedContent>("Box4Image")?.Url() ?? "", services?.Value<IPublishedContent>("Box5Image")?.Url() ?? "", services?.Value<IPublishedContent>("Box6Image")?.Url() ?? ""};
+
+
+    var serviceHeadline = new[] {services?.Value("Box1Headline") ?? "", services?.Value("Box2Headline") ?? "", services?.Value("Box3Headline") ?? "", services?.Value("Box4Headline") ?? "",
+        services?.Value("Box5Headline") ?? "", services?.Value("Box6Headline") ?? ""};
+    var serviceText = new[] {services?.Value("Box1Text") ?? "", services?.Value("Box2Text") ?? "", services?.Value("Box3Text") ?? "", services?.Value("Box4Text") ?? "",
+        services?.Value("Box5Text") ?? "", services?.Value("Box6Text") ?? ""};
+}
+
+
+    <div class="container">
+           <div class="section-title">
+               <div class="label">@sectionTitle</div>
+               <div class="section-title-text"><h2>@sectionHeadline</h2></div>
+           </div>
+           <div class="services-content">
+               @for(var i = 0; i < 6; i++) {
+                   <div class="service-box">
+                       <div><h5>@serviceHeadline[i]</h5></div>
+                       <img src="@serviceImage[i]" alt="">
+                       <div>@serviceText[i]</div>
+                   </div>
+               }
+           </div>
+     </div>

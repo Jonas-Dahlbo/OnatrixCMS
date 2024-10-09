@@ -1,0 +1,112 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+	Layout = "mainLayout.cshtml";
+	ViewBag.Title = Model?.Value("pageTitle") ?? null;
+    ViewBag.Id = "about";
+
+	var aboutImage = Model?.Value<IPublishedContent>("aboutImage")?.Url() ?? "";
+	
+	var reviewStars = Model?.Value<IPublishedContent>("reviewStarsImage")?.Url() ?? "";
+	var reviewImage = Model?.Value<IPublishedContent>("reviewImage")?.Url() ?? "";
+
+	var expertImage = new[] {
+        Model?.Value<IPublishedContent>("expert1Image")?.Url() ?? "", 
+        Model?.Value<IPublishedContent>("expert2Image")?.Url() ?? "", 
+        Model?.Value<IPublishedContent>("expert3Image")?.Url() ?? "",
+        Model?.Value<IPublishedContent>("expert4Image")?.Url() ?? "", 
+        Model?.Value<IPublishedContent>("expert5Image")?.Url() ?? "", 
+        Model?.Value<IPublishedContent>("expert6Image")?.Url() ?? "",
+		Model?.Value<IPublishedContent>("expert7Image")?.Url() ?? ""
+        };
+
+	var expertName = new[] {
+        Model?.Value("expert1Name") ?? "", 
+        Model?.Value("expert2Name") ?? "", 
+        Model?.Value("expert3Name") ?? "", 
+        Model?.Value("expert4Name") ?? "", 
+		Model?.Value("expert5Name") ?? "", 
+        Model?.Value("expert6Name") ?? "", 
+        Model?.Value("expert7Name") ?? ""
+    };
+	
+	var expertJob = new[] {
+        Model?.Value("expert1Job") ?? "", 
+        Model?.Value("expert2Job") ?? "", 
+        Model?.Value("expert3Job") ?? "", 
+        Model?.Value("expert4Job") ?? "", 
+		Model?.Value("expert5Job") ?? "", 
+        Model?.Value("expert6Job") ?? "", 
+        Model?.Value("expert7Job") ?? ""
+    };
+}
+
+    <section id="about-us" class="about-us container">
+        <div class="about-founder">
+            <img src="@aboutImage" alt="">
+            <div>@Model?.Value("aboutImageText")</div>
+        </div>
+        <div class="about-us-text">
+            <div class="quote">@Model?.Value("aboutQuote")</div>
+            <div><p>@Model?.Value("aboutParagraph1")</p></div>
+            <div><p>@Model?.Value("aboutParagraph2")</p></div>
+            <div><p>@Model?.Value("aboutParagraph3")</p></div>
+            <div><p>@Model?.Value("aboutParagraph4")</p></div>
+            <div><p>@Model?.Value("aboutParagraph5")</p></div>
+            <div><p>@Model?.Value("aboutParagraph6")</p></div>
+            <div><p>@Model?.Value("aboutParagraph7")</p></div>
+        </div>
+    </section>
+
+	<section id="our-reviews" class="our-reviews">
+		<div class="reviews">
+            <div class="section-title">
+                <div class="label">@Model?.Value("reviewSectionTitle")</div>
+                <div><h2>@Model?.Value("reviewHeadline")</h2></div>
+            </div>
+            <div class="quote">
+                <div>@Model?.Value("reviewQuote")</div>
+            </div>
+            <div class="reviewer">
+                <img src="@reviewStars" alt="">
+                <div>@Model?.Value("reviewReviewer")</div>
+                <div class="reviewer-workplace">@Model?.Value("reviewReviewerJob")</div>
+            </div>
+        </div>
+        <div><img src="@reviewImage" alt=""></div>
+	</section>
+
+	<section class="our-experts container">
+        <div class="section-title">
+            <div class="label">@Model?.Value("expertsSectionTitle")</div>
+            <div><h2>@Model?.Value("expertsHeadline")</h2></div>
+        </div>
+        <div class="about-employees">
+            <div class="about-employee-large">
+				@for(var i = 0; i < 3; i++) {
+					<div class="large-employee-box">
+                    	<img src="@expertImage[i]" alt="">
+                   		<div class="employee-infolg">
+                        	<div class="employee-name">@expertName[i]</div>
+                        	<div class="note">@expertJob[i]</div>
+                    	</div>
+                	</div>
+				}
+            </div>
+            <div class="about-employee-small">
+				@for(var i = 3; i < 7; i++) {
+					<div class="small-employee-box">
+						<img src="@expertImage[i]" alt="">
+                    	<div class="employee-infolg">
+                        	<div class="employee-name">@expertName[i]</div>
+                        	<div class="note">@expertJob[i]</div>
+                    	</div>
+                	</div>
+				}
+            </div>
+        </div>
+    </section>
+
+    <section class="contact">
+        @await Html.PartialAsync("partials/static/contactPartial.cshtml")
+    </section>

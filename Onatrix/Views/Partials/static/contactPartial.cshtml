@@ -1,0 +1,38 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@inject Umbraco.Cms.Web.Common.UmbracoHelper UmbracoHelper
+@{
+        var rootContents = UmbracoHelper.ContentAtRoot();
+        var contact = rootContents?.FirstOrDefault(x => x.ContentType.Alias == "contactPartialPage") ?? null;
+
+        var contactBackgroundImage = contact?.Value<IPublishedContent>("contactBackgroundImage")?.Url() ?? "";
+        var contactImage = contact?.Value<IPublishedContent>("contactImage")?.Url() ?? "";
+        var contactTitle = contact?.Value("contactTitle") ?? "";
+
+        var contactGroupImage = new[] {contact?.Value<IPublishedContent>("locationImage")?.Url() ?? "", contact?.Value<IPublishedContent>("phoneImage")?.Url() ?? "", contact?.Value<IPublishedContent>("emailImage")?.Url() ?? ""};
+        var contactGroupTitle = new[] {contact?.Value("locationTitle") ?? "", contact?.Value("phoneTitle") ?? "", contact?.Value("emailTitle") ?? ""};
+        var contactGroupText = new[] {contact?.Value("locationText") ?? "", contact?.Value("phoneText") ?? "", contact?.Value("emailText") ?? ""};
+}
+
+
+        <div class="contact-bg">
+            <div class="container">
+                <img class="contact-bgimg" src="@contactBackgroundImage" alt="">
+            </div>
+        </div>
+        <div class="contact-content container">
+            <div class="contact-img">
+                <img src="@contactImage" alt="">
+            </div>
+            <div class="contact-box">
+                <h2>@contactTitle</h2>
+                @for(var i = 0; i < 3; i++) {
+                    <div class="contact-grp">
+                        <div><img src="@contactGroupImage[i]" alt=""> <div class="sub-title4">@contactGroupTitle[i]</div></div>
+                        <div class="contact-text">@contactGroupText[i]</div>
+                    </div>
+                }
+            </div>
+    
+        </div>
+    

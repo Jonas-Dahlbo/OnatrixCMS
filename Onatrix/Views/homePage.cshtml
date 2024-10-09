@@ -1,0 +1,160 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+	Layout = "mainLayout.cshtml";
+	ViewBag.Title = Model?.Value("pageTitle") ?? null;
+    ViewBag.Id = "homePage";
+
+
+	var heroBackgroundImage = Model?.Value<IPublishedContent>("heroBackgroundImage")?.Url() ?? "";
+	var aboutSignatureImage = Model?.Value<IPublishedContent>("aboutSignatureImage")?.Url() ?? "";
+
+    var storyBackgroundImage = Model?.Value<IPublishedContent>("storyBackgroundImage")?.Url() ?? "";
+	var storyImage = Model?.Value<IPublishedContent>("storyImage")?.Url() ?? "";
+
+    var successBackgroundImage = Model?.Value<IPublishedContent>("successBackgroundImage")?.Url() ?? "";
+	var successImage = Model?.Value<IPublishedContent>("successImage")?.Url() ?? "";
+    
+    var projectImage = new[] {
+        Model?.Value<IPublishedContent>("recentBox1Image")?.Url() ?? "", 
+        Model?.Value<IPublishedContent>("recentBox2Image")?.Url() ?? "", 
+        Model?.Value<IPublishedContent>("recentBox3Image")?.Url() ?? "",
+        Model?.Value<IPublishedContent>("recentBox4Image")?.Url() ?? ""
+        };
+    
+    var projectTitle = new[] {
+        Model?.Value("recentBox1Project") ?? "", 
+        Model?.Value("recentBox2Project") ?? "", 
+        Model?.Value("recentBox3Project") ?? "", 
+        Model?.Value("recentBox4Project") ?? ""
+    };
+
+    var projectService = new[] {Model?.Value("recentBox1Service") ?? "", 
+        Model?.Value("recentBox2Service") ?? "", 
+        Model?.Value("recentBox3Service") ?? "", 
+        Model?.Value("recentBox4Service") ?? ""
+    };
+
+    var partnerUrl = new[] {Model?.Value("partner1Url") ?? "", 
+        Model?.Value("partner2Url") ?? "", 
+        Model?.Value("partner3Url") ?? "", 
+        Model?.Value("partner4Url") ?? "",
+        Model?.Value("partner5Url") ?? "", 
+        Model?.Value("partner6Url") ?? ""
+    };
+
+    var partnerLogo = new[] {
+        Model?.Value<IPublishedContent>("partner1Image")?.Url() ?? "", 
+        Model?.Value<IPublishedContent>("partner2Image")?.Url() ?? "", 
+        Model?.Value<IPublishedContent>("partner3Image")?.Url() ?? "",
+        Model?.Value<IPublishedContent>("partner4Image")?.Url() ?? "", 
+        Model?.Value<IPublishedContent>("partner5Image")?.Url() ?? "", 
+        Model?.Value<IPublishedContent>("partner6Image")?.Url() ?? ""
+    };
+}
+
+<section id="hero" class="hero">
+        <img class="hero-bg" src="@heroBackgroundImage" alt="">
+        <div class="hero-top container">
+                <div class="hero-headline">
+                    <h1>@Model?.Value("heroHeadline")</h1>
+                    <div class="hero-ingress">
+                        @Model?.Value("heroIngress")
+                    </div>
+                    <a href="@Model?.Value("heroButtonUrl")" class="btn-primary">@Model?.Value("heroButtonText")</a>
+                </div>
+        </div>
+        <div class="hero-bottom container">
+            <div class="hero-text-box">
+                <div class="label">@Model?.Value("aboutSectionTitle")</div>
+                <div><h2>@Model?.Value("aboutHeadline")</h2></div>
+                <div class="quote">@Model?.Value("aboutQuote")</div>
+                <div class="hero-about-text">@Model?.Value("aboutText")</div>
+                <img src="@aboutSignatureImage" alt="">
+                <div class="signature">@Model?.Value("aboutSignature")</div>
+            </div>
+        </div>
+        <div class="request-box">
+            <div class="request-title"><h3>Request a call back</h3></div>
+            <div class="request-ingress">Dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat</div>
+            <div class="request-form"><form action="post" type="Submit">
+                <div><input type="text" name="" id="" placeholder="Name"></div>
+                <div><input type="text" name="" id="" placeholder="Email Address"></div>
+                <div><input type="text" name="" id="" placeholder="Phone"></div>
+                <div>
+                    <select name="service" id="">
+                        <option value="Financial consulting">Financial consulting</option>
+                    </select>
+                </div>
+                <button class="btn-secondary">Submit</button>
+            </form></div>
+        </div>
+</section>
+
+<section id="services" class="services grey-bg">
+    @await Html.PartialAsync("partials/static/servicesPartial.cshtml")
+</section>
+
+<section id="our-story" class="our-story">
+    <div class="our-story-content container">
+        <img class="world-bg" src="@storyBackgroundImage" alt="">
+        <div class="our-story-title"> <h2>@Model?.Value("storyHeadline")
+            <div class="sub2">@Model?.Value("storyHeadlineSub3")</div></h2>
+        </div>
+        <div class="our-story-text">@Model?.Value("storyText")</div>
+        <a href="@Model?.Value("storyButtonUrl")" class="btn-primary">@Model?.Value("storyButtonText")</a>
+        <img src="@storyImage" alt="">
+    </div>
+</section>
+
+<section id="our-success" class="our-success">
+        <div class="container">
+            <div class="section-title">
+                <div class="label">@Model.Value("successSectionTitle")</div>
+                <div class="section-title-text"><h2>@Model.Value("successHeadline")</h2></div>
+            </div>
+            <div class="success-content">
+                <div class="success-grp">
+                    <h1 class="sub2">@Model.Value("successBox1Number")</h1>
+                    <p class="sub-title">@Model.Value("successBox1Ingress")</p>
+                </div>
+                <div class="success-grp">
+                    <h1 class="sub2">@Model.Value("successBox2Number")</h1>
+                    <p class="sub-title">@Model.Value("successBox2Ingress")</p>
+                </div>
+                <div class="success-grp">
+                    <h1 class="sub2">@Model.Value("successBox3Number")</h1>
+                    <p class="sub-title">@Model.Value("successBox3Ingress")</p>
+                </div>
+            </div>
+        </div>
+        <img src="@successImage" alt="">
+        <img class="world-bg" src="@successBackgroundImage" alt="">
+    </section>
+
+    <section id="recent-projects" class="recent-projects">
+        <div class="section-title container">
+            <div class="label">@Model?.Value("recentSectionTitle")</div>
+            <div><h2>@Model?.Value("recentHeadline")</h2></div>
+        </div>
+        <div class="recent-projects-content">
+            @for(var i = 0; i < 4; i++) {
+                <a class="recent-projects-box">
+                    <img src="@projectImage[i]" alt="">
+                    <div class="recent-projects-text">
+                        <div>
+                            <div class="sub-title1">@projectTitle[i]</div>
+                            <div>@projectService[i]</div>
+                        </div>
+                    <div class="active-project"><i class="fa-solid fa-chevron-right" style="color: #ffffff;"></i></div>
+                    </div>
+                </a>
+            }
+        </div>
+    </section>
+
+    <section class="partners container">
+        @for(var i = 0; i < 6; i++) {
+            <a href="@partnerUrl[i]" target="_blank"><img src="@partnerLogo[i]" alt=""></a>
+        }
+    </section>

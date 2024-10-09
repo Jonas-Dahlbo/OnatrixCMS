@@ -1,0 +1,55 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+	Layout = "mainLayout.cshtml";
+    ViewBag.Title = Model?.Value("pageTitle") ?? null;
+    ViewBag.id = "contactUs";
+
+	var contactImage = Model?.Value<IPublishedContent>("contactImage")?.Url() ?? "";
+
+	var contactPartnerUrl = new[] {Model?.Value("contactPartner1Url") ?? "", 
+        Model?.Value("contactPartner2Url") ?? "", 
+        Model?.Value("contactPartner3Url") ?? "", 
+        Model?.Value("contactPartner4Url") ?? "",
+        Model?.Value("contactPartner5Url") ?? "", 
+        Model?.Value("contactPartner6Url") ?? ""
+    };
+
+    var contactPartnerLogo = new[] {
+        Model?.Value<IPublishedContent>("contactPartner1Image")?.Url() ?? "", 
+        Model?.Value<IPublishedContent>("contactPartner2Image")?.Url() ?? "", 
+        Model?.Value<IPublishedContent>("contactPartner3Image")?.Url() ?? "",
+        Model?.Value<IPublishedContent>("contactPartner4Image")?.Url() ?? "", 
+        Model?.Value<IPublishedContent>("contactPartner5Image")?.Url() ?? "", 
+        Model?.Value<IPublishedContent>("contactPartner6Image")?.Url() ?? ""
+    };
+}
+
+<section class="contact-us">
+        <div class="contact-bg">
+            <img src="@contactImage" alt="">
+            <div class="partners container">
+				@for(var i = 0; i < 6; i++) {
+           			 <a href="@contactPartnerUrl[i]" target="_blank"><img src="@contactPartnerLogo[i]" alt=""></a>
+       			 }
+            </div>
+        </div>
+        <div class="contact-form-bx">
+            <div class="section-title">
+                <div class="label">@Model?.Value("contactSectionTitle")</div>
+                <div class="section-title-text"><h2>@Model?.Value("contactHeadline")</h2></div>
+            </div>
+            <div class="quote">@Model?.Value("contactText")</div>
+            <form action="">
+                <input type="text" id="c-name" placeholder="Name">
+                <input type="text" id="c-phone" placeholder="Phone">
+                <input type="text" id="c-email" placeholder="Email address">
+                <div>
+                    <select name="service" id="c-service">
+                        <option value="Financial consulting">Financial consulting</option>
+                    </select>
+                </div>
+                <button class="btn-primary">Submit</button>
+            </form>
+        </div>
+    </section>

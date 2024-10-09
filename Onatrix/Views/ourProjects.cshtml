@@ -1,0 +1,75 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+    Layout = "mainLayout.cshtml";
+    ViewBag.Title = Model?.Value("pageTitle") ?? null;
+    ViewBag.Id = "ourProjects";
+
+    var projectImage = new[] {
+        Model?.Value<IPublishedContent>("project1Image")?.Url() ?? "", 
+        Model?.Value<IPublishedContent>("project2Image")?.Url() ?? "", 
+        Model?.Value<IPublishedContent>("project3Image")?.Url() ?? "", 
+        Model?.Value<IPublishedContent>("project4Image")?.Url() ?? ""
+    };
+
+    var projectTitle = new[] {
+        Model?.Value("project1Title") ?? "", 
+        Model?.Value("project2Title") ?? "", 
+        Model?.Value("project3Title") ?? "", 
+        Model?.Value("project4Title") ?? ""
+    };
+    
+    var projectDate = new[] {
+        Model?.Value("project1Date") ?? "", 
+        Model?.Value("project2Date") ?? "", 
+        Model?.Value("project3Date") ?? "", 
+        Model?.Value("project4Date") ?? ""
+    };
+    
+    var projectText = new[] {
+        Model?.Value("project1Text") ?? "", 
+        Model?.Value("project2Text") ?? "", 
+        Model?.Value("project3Text") ?? "", 
+        Model?.Value("project4Text") ?? ""
+    };
+}
+
+<section class="our-projects container">
+    <div class="projects-content">
+        @for(var i = 0; i < 4; i++) {
+            <div class="project-box @(i == 3 ? "last-box" : "")">
+                <img src="@projectImage[i]" alt="">
+                <div class="project-text">
+                    <div><h5>@projectTitle[i]</h5></div>
+                    <div class="note"><i class="fa-solid fa-calendar-days" style="color: #9C9EA6;"></i>@projectDate[i]</div>
+                    <div class="project-ingress">@projectText[i]</div>
+                    <div class="sub-title4">Read more <i class="fa-solid fa-arrow-right" style="color: #D9C3A9;"></i></div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="project-sidebar">
+        <h5>@Model?.Value("projectSideBarTitle")</h5>
+        <div class="tags">
+            <div>@Model?.Value("projectSideBarTag1")</div>
+            <div>@Model?.Value("projectSideBarTag2")</div>
+            <div>@Model?.Value("projectSideBarTag3")</div>
+            <div>@Model?.Value("projectSideBarTag4")</div>
+            <div>@Model?.Value("projectSideBarTag5")</div>
+            <div>@Model?.Value("projectSideBarTag6")</div>
+            <div>@Model?.Value("projectSideBarTag7")</div>
+            <div>@Model?.Value("projectSideBarTag8")</div>
+        </div>
+        <div class="mail-form">
+            <div><h5>How can we help you?</h5></div>
+            <div class="form-ingress">online support 24/7, we are here to help you</div>
+            <form action="post">
+                <input type="text" name="" id="" placeholder="Email-address">
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="contact">
+    @await Html.PartialAsync("partials/static/contactPartial.cshtml")
+</section>
