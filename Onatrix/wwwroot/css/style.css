@@ -277,41 +277,27 @@ header .header-mid {
 }
 
 header .header-bottom {
-    position: relative;
-    background-color: #F7F7F7;
-    background-image: url("images/header-img.svg");
-    background-size: cover;
-    background-position: center;
+  position: relative;
+  background-color: #F7F7F7;
+  height: 250px;
 }
-
-    header .header-bottom .header-bottom-container {
-        display: block;
-        font-size: 12px;
-    }
-
-        header .header-bottom .header-bottom-container .header-headline {
-            position: absolute;
-            z-index: 1;
-            bottom: 40%;
-            left: 50%;
-        }
-
-        header .header-bottom .header-bottom-container .header-navigation {
-            position: absolute;
-            z-index: 1;
-            bottom: 40%;
-            left: 52.5%;
-            display: flex;
-            gap: 5px;
-        }
-
-            header .header-bottom .header-bottom-container .header-navigation i {
-                font-size: 10px;
-            }
-
-            header .header-bottom .header-bottom-container .header-navigation .sub2 {
-                color: #D9C3A9;
-            }
+header .header-bottom img {
+  position: absolute;
+}
+header .header-bottom .header-bottom-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  font-size: 12px;
+}
+header .header-bottom .header-bottom-container .header-navigation {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
 
 footer {
     background-color: #0E0E0E;
@@ -546,6 +532,10 @@ footer {
             padding-top: 80px;
         }
 
+.recent-projects {
+    margin-top: 200px;
+}
+
 .recent-projects .section-title {
     color: #535656;
 }
@@ -599,7 +589,11 @@ footer {
             background-color: #4F5955;
             transition: 0.3s ease-in-out;
         }
-
+        
+        .recent-projects .recent-projects-content .recent-projects-box:hover .recent-projects-text .sub-title1 {
+            color: #D9C3A9;
+        }
+        
         .recent-projects .recent-projects-content .recent-projects-box:hover .active-project {
             display: block;
         }
@@ -774,7 +768,7 @@ footer {
                 }
 
 .no-bgcolor .contact-bg {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .riskmanagement {
