@@ -1,0 +1,12 @@
+footer {
+    background-color: $dark;
+    color: $theme;
+    padding: 15px;
+    .sub2 {
+        color: $sub2;
+    }
+    .container {
+        display: flex;
+        gap: 3px;
+    }
+}

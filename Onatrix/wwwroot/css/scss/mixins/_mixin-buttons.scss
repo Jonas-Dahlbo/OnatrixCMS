@@ -1,0 +1,30 @@
+@mixin button-color($backgroud-color, $text-color, $hover-color, $hover-text-color, $border-color: null, $hover-border-color: null){
+    background-color: $backgroud-color;
+    border-color: if($border-color, $border-color, $backgroud-color);
+    color: $text-color;
+    outline: none !important;
+
+    &:hover {
+        background-color: $hover-color;
+        border-color: if($hover-border-color, $hover-border-color, $hover-color);
+        color: $hover-text-color;
+    }
+    &:hover, &:focus, &:active {
+        outline: none !important;
+    }
+}
+
+@mixin btn {
+    display: inline-block;
+    padding: 15px 40px;
+    border: 1px solid;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none !important;
+    
+    &:hover {
+        transition: 0.3s;
+        text-decoration: none;
+    }
+}

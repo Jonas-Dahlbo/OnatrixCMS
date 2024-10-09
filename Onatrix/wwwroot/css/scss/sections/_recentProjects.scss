@@ -1,0 +1,53 @@
+.recent-projects {
+    .section-title {
+        color: $body-text;
+        .label {
+            color: $sub2;
+        }
+    }
+    .recent-projects-content {
+        display: flex;
+        position: relative;
+        a {
+            color: $white !important;
+            text-decoration: none;
+        } 
+        
+        .recent-projects-box {
+            width: 100%;
+            display: flex;
+            img {
+                position: absolute;
+                z-index: -1;
+                width: 25%;
+            }
+            .recent-projects-text {
+                display: flex;
+                background-color: rgba($theme, 0.6);
+                margin-top: 83.5%;
+                width: 100%;
+                padding: 20px;
+                gap: 110px;
+                .active-project {
+                    display: none;
+                    i {
+                        font-size: 50px;
+                    }
+                }
+            }
+
+            &:hover {
+                .recent-projects-text {
+                    padding-top: 30px;
+                    padding-bottom: 30px;
+                    margin-top: 79.2%;
+                    background-color: $theme;
+                    transition: 0.3s ease-in-out;
+                }
+                .active-project {
+                    display: block;
+                }
+            }
+        }
+    }
+}

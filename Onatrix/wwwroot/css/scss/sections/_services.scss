@@ -1,0 +1,50 @@
+.services {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    color: $body-text;
+    .container {
+        display: block;
+        .section-title {
+            text-align: center;
+            justify-content: space-around;
+            .label {
+                color: $sub2;
+            }
+            .section-title-text {
+                padding-left: 275px;
+                padding-right: 275px;
+            }
+        }
+
+        .services-content {
+            text-align: start;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+
+            .service-box {
+                background-color: $white;
+                border: 2px solid $theme2;
+                border-radius: 5px;
+                img {
+                    width: 100%;
+                }
+                div {
+                    padding: 25px;
+                }
+            }
+        }
+    }
+}
+
+.grey-bg {
+    background-color: $theme2;
+}
+
+.no-label {
+    .section-title {
+        .label {
+            display: none;
+        }
+    }
+}

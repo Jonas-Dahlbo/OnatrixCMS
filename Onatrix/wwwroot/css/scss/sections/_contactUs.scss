@@ -1,0 +1,66 @@
+.contact-us {
+    position: relative;
+    color: $body-text;
+    img {
+        padding-bottom: 40px;
+    }
+    .contact-form-bx {
+        background-color: $white;
+        position: absolute;
+        z-index: 1;
+        left: 25%;
+        right: 25%;
+        bottom: 200px;
+        padding: 40px;
+        border-radius: 5px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        .section-title {
+            text-align: center;
+            padding-left: 20%;
+            padding-right: 20%;
+        }
+        .quote {
+            text-align: center;
+            padding-left: 15%;
+            padding-right: 15%;
+        }
+        form {
+            display: grid;
+            grid-template-areas: "name phone" "email service" "btn btn";
+            gap: 15px;
+            padding-top: 25px;
+            
+            input {
+                width: 100%;
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #EAEAEA;
+            }
+            #c-name {
+                grid-area: name;
+            }
+            #c-phone {
+                grid-area: phone;
+            }
+            #c-email {
+                grid-area: email;
+            }
+            #c-service {
+                grid-area: service;
+                width: 100%;
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #EAEAEA;
+                color: $body-text;
+            }
+            .btn-primary {
+                grid-area: btn;
+                background-color: $theme;
+                color: $sub;
+                width: 20%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+.our-story {
+    color: $body-text;
+    .our-story-content {
+        position: relative;
+        display: block;
+        justify-content: center;
+        text-align: center;
+        padding-top: 100px;
+        
+        .world-bg {
+            padding-top: 70px;
+            position: absolute;
+            z-index: -1;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        .our-story-title {
+            padding-bottom: 40px;
+            color: $theme;
+            .sub2 {
+                color: $sub2;
+            }
+        }
+        .our-story-text {
+            padding-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 60%;
+        }
+
+        .btn-primary {
+            background-color: $theme;
+            color: $theme2;
+        }
+        img {
+            padding-top: 80px;
+        }
+    }
+}

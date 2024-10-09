@@ -1,0 +1,44 @@
+.contact{
+    position: relative;
+    color: $theme;
+    .contact-bg {
+        padding-top: 60px;
+        position: absolute;
+        background-color: $theme2;
+        z-index: -1;
+        width: 100%;
+        .contact-bgimg {
+            bottom: 0;
+        }
+    }
+    .contact-content {
+        display: flex;
+        align-items: center;
+        gap: 300px;
+        .contact-img {
+            padding-top: 20px;
+        }
+        .contact-box {
+            width: 35%;
+            .contact-grp {
+                padding-top: 30px;
+                div{
+                    align-items: center;
+                    display: flex;
+                    gap:15px;
+                    
+                }
+                .contact-text {
+                    padding-left: 30px;
+                    font-style: italic;
+                }
+            }
+        }
+    }
+}
+
+.no-bgcolor {
+    .contact-bg {
+        background-color: transparent;
+    }
+}
