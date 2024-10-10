@@ -51,7 +51,7 @@
             <a href="/" class="logo"><img src="@headerLogo" alt=""></a>
             <nav>
                 @for(var i = 0; i < 4; i++) {
-                    if(headerCurrentPage == navigationLink[i]) {
+                    if(headerCurrentPage.ToString()?.ToLower() == navigationLink[i].ToString()?.ToLower()) {
                         <div><a class="current-nav" href="">@navigationLink[i]</a></div>
                     }
                     else {
@@ -70,6 +70,12 @@
                         <div class="header-headline"><h2>@headerPageTitle</h2></div>
                         <div class="header-navigation">
                         <p>Home <i class="fa-solid fa-chevron-right"></i></p>
+                        @if(headerCurrentPage.ToString()?.ToLower() == "riskmanagement") {
+                            <p>Services <i class="fa-solid fa-chevron-right"></i></p>
+                        }
+                        else if((headerCurrentPage.ToString()?.ToLower() == "annualreport")) {
+                            <p>Services <i class="fa-solid fa-chevron-right"></i></p>
+                        }
                         <p class="sub2">@headerCurrentPage</p>
                     </div>
                 </div>
