@@ -1095,3 +1095,124 @@ footer {
             .our-success .container .success-content .success-grp p {
                 font-weight: 600;
             }
+
+
+.annual-report {
+  display: grid;
+  grid-template-columns: 2.8fr 1fr;
+  padding-top: 80px;
+  color: #535656;
+}
+.annual-report .annual-report-content {
+  padding-right: 50px;
+  border-right: 1px solid #F7F7F7;
+}
+.annual-report .annual-report-content .note {
+  padding-bottom: 20px;
+}
+.annual-report .annual-report-content #annual-img1 {
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
+.annual-report .annual-report-content .annual-list {
+  color: #5D8C87;
+}
+.annual-report .annual-report-content .annual-list div {
+  color: #4F5955;
+}
+.annual-report .annual-report-content .annual-section2 {
+  display: flex;
+  gap: 30px;
+  padding-bottom: 30px;
+}
+.annual-report .annual-report-content .annual-section2 h6 {
+  padding-top: 5px;
+}
+.annual-report .annual-report-content .annual-section2 p {
+  padding-bottom: 15px;
+}
+.annual-report .annual-report-content .annual-section3 p {
+  padding-bottom: 15px;
+}
+.annual-report .annual-report-content .annual-section3 img {
+  padding-top: 10px;
+}
+.annual-report .annual-report-content .annual-section4 {
+  padding-top: 20px;
+}
+.annual-report .annual-report-content .annual-section4 p {
+  padding-bottom: 15px;
+}
+.annual-report .annual-report-content .tag-container {
+  display: flex;
+  gap: 20px;
+  text-align: center;
+}
+.annual-report .annual-report-content .tag-container p {
+  margin-top: 17px;
+}
+.annual-report .annual-report-content .tag-container .tags-sub2 {
+  display: flex;
+  gap: 15px;
+  padding-top: 10px;
+  padding-bottom: 40px;
+}
+.annual-report .annual-report-content .tag-container .tags-sub2 div {
+  font-size: 13px;
+  background-color: #F2EDDC;
+  border-radius: 20px;
+  padding: 8px 15px 8px 15px;
+  margin-left: 5px;
+}
+.annual-report .annual-sidebar {
+  padding-left: 50px;
+}
+.annual-report .annual-sidebar .sidebar-recent .recent-grp {
+  display: flex;
+  gap: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #F7F7F7;
+}
+.annual-report .annual-sidebar .sidebar-recent .last-grp {
+  border: none;
+}
+.annual-report i {
+    margin-right: 5px;
+}
+.annual-report .annual-sidebar .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding-top: 10px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+.annual-report .annual-sidebar .tags div {
+  font-size: 13px;
+  border: 1.5px solid #EAEAEA;
+  border-radius: 20px;
+  padding: 10px 20px 10px 20px;
+  margin-left: 5px;
+}
+.annual-report .annual-sidebar .mail-form {
+  background-color: #4F5955;
+  color: #F2EDDC;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+.annual-report .annual-sidebar .mail-form h5 {
+  color: #F2EDDC;
+}
+.annual-report .annual-sidebar .mail-form .form-ingress {
+  color: #FFFFFF;
+  padding-bottom: 20px;
+}
+.annual-report .annual-sidebar .mail-form form input {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 15px;
+}
